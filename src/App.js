@@ -1,23 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
+import Faqs from './components/Faqs';
+import {useState} from 'react'
 
 function App() {
+
+  const [faqs, setFaqs] = useState([
+    {
+      faqHeader: 'Question 1',
+      faqBody: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. In, ipsa!',
+      faqFooter: 'https://www.youtube.com'
+    },
+    {
+      faqHeader: 'Question 2',
+      faqBody: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. In, ipsa!',
+      faqFooter: 'https://www.youtube.com'
+    },
+    {
+      faqHeader: 'Question 3',
+      faqBody: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. In, ipsa!',
+      faqFooter: 'https://www.youtube.com'
+    }    
+  ]) 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Faqs faqs={faqs} />
     </div>
   );
 }
