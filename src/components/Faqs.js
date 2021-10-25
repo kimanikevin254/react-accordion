@@ -1,25 +1,28 @@
 import React, {useState} from 'react'
-import { AiFillCaretDown } from 'react-icons/ai'
+import { AiFillCaretDown, AiFillCaretUp } from 'react-icons/ai'
 
 function Faqs({ faqs }) {
 
-    const [open, setIsOpen] = useState(false)
+    const [selected, setSelected] = useState()
 
     const toggler = (index) => {
-        open === false ? setIsOpen(true) : setIsOpen(false)
-        console.log(index)
+        index !== selected ? setSelected(index) : setSelected(null)
     }
     return (
         <div className='faq'>
         <h2>FAQs</h2>
         {faqs.map((faq, index) => (
             <div key={index} className='i-faq'>
-                <div className='faq-header'>
+                <div className='faq-header' onClick={() => toggler(index)}>
                     {faq.faqHeader}
-                    <AiFillCaretDown style={{cursor: 'pointer'}} onClick={() => {toggler(index)}} />
+
+                    {
+                        selected === index ? (<AiFillCaretUp />) : (<AiFillCaretDown />) 
+                    }
+
                 </div>
 
-                <div className={open === false ? 'hide' : 'show'}>
+                <div className={selected === index ? 'show' : 'hide'}>
                     <div className="faq-body">
                         {faq.faqBody}
                     </div>  
